@@ -4,7 +4,11 @@
   item.tags
     .sort((a, b) => a.localeCompare(b))
     .forEach(function(tag){
-      tags.push('<a href="' + config.root + tag.path + '">' + tag.name + '</a>');
+      if (tag.path && tag.name) {
+        tags.push('<a href="' + config.root + tag.path + '">' + tag.name + '</a>');
+      } else {
+        tags.push('<a href="' + config.root + config.tag_dir + '/' + tag + '">' + tag + '</a>');
+      }
     });
   %>
   <div class="tags">
